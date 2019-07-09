@@ -61,7 +61,7 @@ function showProfile() {
     let elem = document.createElement("div");
     elem.setAttribute("class", "card");
     elem.setAttribute("style", "width: 18rem;");
-    elem.innerHTML = `<img class="card-img-top" src="https://www.gravatar.com/avatar/${user.emailHash}?s=400" alt="Gravatar"><div class="card-body"><center><h5 class="card-title">${user.name}</h5></center></div>`;
+    elem.innerHTML = `<img class="card-img-top" src="https://www.gravatar.com/avatar/${user.emailHash}?s=400" alt="Gravatar"><div class="card-body"><center><h5 class="card-title">${user.name}</h5></center><br><center>${user.email}</center></div>`;
     document.getElementById("showProfile").appendChild(elem);
 }
 
