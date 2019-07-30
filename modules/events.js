@@ -15,6 +15,20 @@ function getAll(req, res) {
         });
 }
 
+function addEvent(req, res) {
+    let event = { _id: new objectId(), type: req.body.type, created_at: new Date(), completed: false, members: [], fixtures: [] };
+    req.db.collection('events').insertOne(event)
+        .then(function(results) {
+            if (result == null) {
+                res.status(501).send("No result");
+            }
+            res.status(200).send(event);
+        }).catch(function(error) {
+            res.status(500).send("Not found");
+        });
+}
+
 module.exports = {
-    getAll
+    getAll,
+    addEvent
 }

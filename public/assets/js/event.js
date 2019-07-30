@@ -128,8 +128,33 @@ function showTournament() {
     document.getElementById("showTournaments").appendChild(elem);
 }
 
+function addEvent() {
+    let eventType = document.getElementById('eventTypeId').value;
+    fetch("/api/event/add", {
+            method: "post",
+            headers: {
+                "content-type": "application/json; charset=UTF-8"
+            },
+            body: `{"type" : ${eventType}}`
+        }).then(function(data) {
+            if (data.status == 200) {
+                return data;
+            }
+            throw "Error";
+        }).then(function(data) {
+            return data.json();
+        }).then(function(data) {
+            console.log('data', data);
+            window.location = `/#/event/`
+        })
+        .catch(function(error) {
+            console.log(error);
+        })
+}
+
 let events = [];
 let cl = [];
 let leagues = [];
 let ch = [];
 let to = [];
+let event = [];

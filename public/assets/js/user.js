@@ -76,8 +76,7 @@ function getManagers() {
         if (data.status == 200) {
             return data;
         }
-        console.log(data);
-        throw "Get aaa managers Error.";
+        throw "Get managers Error.";
     }).then(function(data) {
         return data.json();
     });

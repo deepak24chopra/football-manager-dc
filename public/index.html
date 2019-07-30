@@ -59,6 +59,9 @@
         </div>
     </div>
 </template>
+<template id="event_template">
+    
+</template>
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
@@ -92,16 +95,25 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
+                <form class="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <select id="eventTypeId" name="eventType" class="form-control">
+                                <option selected="true" disabled="true">Select an Event</option>
+                                <option value="cl">Champions League</option>
+                                <option value="l">League</option>
+                                <option value="t">Tournament</option>
+                                <option value="cs">Challenge Series</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript: addEvent();">Add</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </body>
-
 </html>

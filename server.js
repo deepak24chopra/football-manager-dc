@@ -39,6 +39,7 @@ app.post("/api/users/signin", users.signin);
 app.post("/api/users/signup", users.signup);
 app.post("/api/users/all", users.getAll);
 app.post("/api/events/all", events.getAll);
+app.post("/api/event/add", events.addEvent);
 
 //Server running
 app.listen(3000, function() {

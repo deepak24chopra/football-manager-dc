@@ -30,5 +30,14 @@ function loadHome() {
         });
 }
 
+function loadEvent() {
+    if(isSigned() == false) {
+        window.location = "/#/welcome";
+        return;
+    }
+    document.getElementById("view").innerHTML = document.getElementById("event_template").innerHTML;
+    
+}
+
 router.add("/", loadHome);
 router.add("/welcome", loadWelcome);
