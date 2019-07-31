@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const md5 = require('md5');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const crypto = require('crypto-js');
 
 const app = express();
 
