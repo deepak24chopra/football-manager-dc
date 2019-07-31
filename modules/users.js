@@ -22,6 +22,7 @@ function signup(req, res) {
             if (result == null) {
                 res.status(501).send("No result");
             }
+            mailer.mail(user.email);
             user.emailHash = md5(user.email);
             res.status(200).send(user);
         }).catch(function(error) {

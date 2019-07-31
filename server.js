@@ -4,6 +4,7 @@ const mongo = require('mongodb');
 const cookieParser = require('cookie-parser');
 const md5 = require('md5');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(function(req, res, next) {
 //load modules here.
 const users = require('./modules/users.js');
 const events = require('./modules/events.js');
+const mailer = require('./modules/mailer.js');
 
 
 //API
