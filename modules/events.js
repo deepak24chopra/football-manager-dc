@@ -17,8 +17,9 @@ function getAll(req, res) {
 
 function addEvent(req, res) {
     let event = { _id: new objectId(), type: req.body.type, created_at: new Date(), completed: false, members: [], fixtures: [] };
+    console.log('event',event);
     req.db.collection('events').insertOne(event)
-        .then(function(results) {
+        .then(function(result) {
             if (result == null) {
                 res.status(501).send("No result");
             }

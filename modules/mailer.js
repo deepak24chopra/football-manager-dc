@@ -3,12 +3,10 @@ const nodemailer = require('nodemailer');
 async function mail(userEmail) {
 
     let transport = nodemailer.createTransport({
-        host: "", //smtp host here
-        port: 8080,
-        secure: false,
+        service: "gmail",
         auth: {
             user: "deepak2424chopra@gmail.com",
-            pass: "randompassword"
+            pass: "Deepak*24"
         }
     });
 
@@ -17,7 +15,16 @@ async function mail(userEmail) {
         to: userEmail, // here user's email address
         subject: "Verify Account",
         text: "Please verify your account."
+    }, function(err, info) {
+        if (err)
+            console.log(err)
+        else
+            console.log(info);
     });
 
     console.log("Message sent: %s", info.messageId);
+}
+
+module.exports = {
+    mail
 }

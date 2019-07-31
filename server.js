@@ -40,6 +40,7 @@ const mailer = require('./modules/mailer.js');
 app.post("/api/users/signin", users.signin);
 app.post("/api/users/signup", users.signup);
 app.post("/api/users/all", users.getAll);
+app.get("/api/users/verify/:email", users.verifyAccount);
 app.post("/api/events/all", events.getAll);
 app.post("/api/event/add", events.addEvent);
 

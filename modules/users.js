@@ -1,5 +1,6 @@
 const objectId = require("mongodb").ObjectId;
 const md5 = require('md5');
+const mailer = require('./mailer.js');
 
 function signin(req, res) {
     req.db.collection('users').findOne({ email: req.body.email, password: md5(req.body.password) })
@@ -15,14 +16,13 @@ function signin(req, res) {
 }
 
 function signup(req, res) {
-    let user = { _id: new objectId(), email: req.body.email, name: req.body.name, password: md5(req.body.password), created_at: new Date(), form: 0 };
+    let user = { _id: new objectId(), email: req.body.email, name: req.body.name, password: md5(req.body.password), created_at: new Date(), form: 0, emailverified: false, emailLinkDate: new Date() };
     //enter validations here
     req.db.collection('users').insertOne(user)
         .then(function(result) {
             if (result == null) {
                 res.status(501).send("No result");
             }
-            //check mailer
             mailer.mail(user.email);
             user.emailHash = md5(user.email);
             res.status(200).send(user);
@@ -46,8 +46,20 @@ function getAll(req, res) {
         });
 }
 
+function verifyAccount(req, res) {
+    let email = req.params.email;
+    req.db.collection('users').update({
+        email: email
+    }, {
+        accountVerified: true
+    }, {
+        upsert: false
+    })
+}
+
 module.exports = {
     signin,
     signup,
-    getAll
+    getAll,
+    verifyAccount
 }
