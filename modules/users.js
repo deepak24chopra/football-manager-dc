@@ -16,7 +16,7 @@ function signin(req, res) {
 }
 
 function signup(req, res) {
-    let user = { _id: new objectId(), email: req.body.email, name: req.body.name, password: md5(req.body.password), created_at: new Date(), form: 0, emailverified: false, emailLinkDate: new Date() };
+    let user = { _id: new objectId(), email: req.body.email, name: req.body.name, password: md5(req.body.password), created_at: new Date(), form: 0, accountVerified: false, emailLinkDate: new Date() };
     //enter validations here
     req.db.collection('users').insertOne(user)
         .then(function(result) {
