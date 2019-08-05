@@ -152,6 +152,7 @@ function addEvent() {
         })
 }
 
+let addEventHTML = `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEventModal">Add Event</button>`;
 let events = [];
 let cl = [];
 let leagues = [];
