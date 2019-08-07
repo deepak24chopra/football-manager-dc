@@ -46,6 +46,7 @@ app.get("/api/users/verify/:email", users.verifyAccount);
 //events
 app.post("/api/events/all", events.getAll);
 app.post("/api/events/add", events.addEvent);
+app.post("/api/event/:id",events.getEvent);
 
 //Server running
 app.listen(3000, function() {

@@ -15,6 +15,19 @@ function getAll(req, res) {
         });
 }
 
+function getEvent(req, res) {
+    let id = req.body.email;
+    req.db.collection('events').findOne({ _id : id})
+    .then(function(result) {
+        if(result == null) {
+            res.status(501).send("No event found");
+        }
+        res.status(200).send(result);
+    }).catch(function(error) {
+        console.log("Error in fetching event", error);
+    });
+}
+
 function addEvent(req, res) {
     let event = { _id: new objectId(), type: req.body.type, created_at: new Date(), completed: false, members: [], fixtures: [] };
     req.db.collection('events').insertOne(event)
@@ -30,5 +43,6 @@ function addEvent(req, res) {
 
 module.exports = {
     getAll,
+    getEvent,
     addEvent
 }

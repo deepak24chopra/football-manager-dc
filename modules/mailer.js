@@ -14,7 +14,7 @@ async function mail(userEmail) {
         from: "deepak2424chopra@gmail.com",
         to: userEmail, // here user's email address
         subject: "Verify Account",
-        text: `Please click on this account to verify. localhost:3000/api/user/verify/${userEmail}`
+        text: `Please click on this account to verify. http://localhost:3000/api/user/verify/${userEmail}`
     }, function(err, info) {
         if (err)
             console.log(err)

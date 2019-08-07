@@ -32,12 +32,21 @@ function loadHome() {
         });
 }
 
-function loadEvent() {
+function loadEvent(params) {
     if(isSigned() == false) {
         window.location = "/#/welcome";
         return;
     }
+    console.log('in load Event', params.id);
     document.getElementById("view").innerHTML = document.getElementById("event_template").innerHTML;
+    getEvent()
+    .then(function(data) {
+        event = data;
+        showEvent();
+    })
+    .catch(function(error) {
+        console.log('error in loading event.',error);
+    });
 }
 
 function removeEventModal() {
@@ -49,3 +58,4 @@ function removeEventModal() {
 
 router.add("/", loadHome);
 router.add("/welcome", loadWelcome);
+router.add("/event/:id", loadEvent);

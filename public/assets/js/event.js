@@ -1,3 +1,20 @@
+function getEvent(eventId) {
+    return fetch(`/api/event/${eventId}`, {
+        method: "post",
+        headers: {
+            "content-type": "application/json; charset=UTF-8"
+        },
+        body: `{"eventId", "${eventId}"}`
+    }).then(function(data) {
+        if(data.status == 200) {
+            return data;
+        }
+        throw "Get Event error.";
+    }).then(function(data) {
+        return data.json();
+    })
+}
+
 function getEvents() {
     return fetch(`/api/events/all`, {
         method: "post",
@@ -152,8 +169,13 @@ function addEvent() {
         })
 }
 
+function showEvent() {
+    
+}
+
 let addEventHTML = `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEventModal">Add Event</button>`;
 let events = [];
+let event = '';
 let cl = [];
 let leagues = [];
 let ch = [];
