@@ -130,12 +130,12 @@ function showTournament() {
 
 function addEvent() {
     let eventType = document.getElementById('eventTypeId').value;
-    fetch("/api/event/add", {
+    fetch("/api/events/add", {
             method: "post",
             headers: {
                 "content-type": "application/json; charset=UTF-8"
             },
-            body: `{"type" : ${eventType}}`
+            body: `{"type" : "${eventType}" }`
         }).then(function(data) {
             if (data.status == 200) {
                 return data;
@@ -144,8 +144,8 @@ function addEvent() {
         }).then(function(data) {
             return data.json();
         }).then(function(data) {
-            console.log('data', data);
-            window.location = `/#/event/`
+            console.log('data', data); // handle success here
+            window.location = `/#/event/${data._id}`
         })
         .catch(function(error) {
             console.log(error);
