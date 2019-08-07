@@ -170,7 +170,13 @@ function addEvent() {
 }
 
 function showEvent() {
-    
+    document.getElementById('showEvent').innerHTML = '';
+    let elem = document.createElement("div");
+    elem.setAttribute("class", "card");
+    elem.setAttribute("style", "width: 18rem;");
+    let htmlStr = "";
+    htmlStr = `<div class="card-header"><i class="fa fa-trophy"></i>Event<div>`;
+    document.getElementById("showEvent").appendChild(elem);
 }
 
 let addEventHTML = `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEventModal">Add Event</button>`;

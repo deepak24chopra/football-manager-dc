@@ -19,7 +19,7 @@ async function mail(userEmail) {
         if (err)
             console.log(err)
         else
-            console.log(info);
+            console.log('Information',info);
     });
 
     console.log("Message sent: %s", info.messageId);
